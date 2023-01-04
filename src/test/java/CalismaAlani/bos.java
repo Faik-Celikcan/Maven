@@ -19,23 +19,17 @@ public class bos extends TestBase {
     @Test
     public void Test05() throws InterruptedException {
 
-        driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
 
-        driver.findElement(By.cssSelector("button[onclick='jsPrompt()']")).click();
+        driver.get("https://yandex.com.tr/search/?lr=11507&text=youtube&src=suggest_B");
 
-        Thread.sleep(1000);
-
-        driver.switchTo().alert().sendKeys("Ahmet");
+        String x =driver.getWindowHandle();
+        driver.findElement(By.xpath("//span[@class='OrganicTitleContentSpan organic__title'][1]")).click();
+        driver.switchTo().window(x);
+        driver.findElement(By.xpath("//*[text()='Sabah: ']")).click();
 
         Thread.sleep(2000);
 
-        driver.switchTo().alert().accept();
 
-        Thread.sleep(1000);
-
-        String x =driver.findElement(By.xpath("//p[@id='result']")).getText();
-
-        Assert.assertEquals("You entered: Ahmet",x);
-
+        switchToWindow("You Tube");
     }
 }

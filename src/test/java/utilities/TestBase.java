@@ -3,6 +3,7 @@ package utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -35,6 +36,11 @@ public class TestBase {
             }
         }
         driver.switchTo().window(origin);
+    }
+    public void findElementClick(String x){
+
+        driver.findElement(By.xpath(x)).click();
+
     }
 
 
