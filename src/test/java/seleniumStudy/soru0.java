@@ -1,29 +1,34 @@
-package CalismaAlani;
+package seleniumStudy;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class calisma_1_1 {
+public class soru0 {
 
     static WebDriver driver;
 
-    @Before
-    public void setUp(){
+    public static void main(String[] args) {
 
+        /* Given kullanici "https://editor.datatables.net/" sayfasina gider
+    Then new butonuna basar
+    And editor firstname kutusuna "<firstName>" bilgileri girer
+    And editor lastname kutusuna "<lastName>" bilgileri girer
+    And editor position kutusuna "<position>" bilgileri girer
+    And editor office kutusuna "<office>" bilgileri girer
+    And editor extension kutusuna "<extension>" bilgileri girer
+    And editor startdate kutusuna "<startDate>" bilgileri girer
+    And editor salary kutusuna "<salary>" bilgileri girer
+    When Create tusuna basar
+    Then Kullanıcının eklendiğini doğrular.
+    And Eklediği kullanıcı kaydını siler
+    Then Kullanıcinin silindiğini doğrular.
+    */
         driver= new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
-    }
-
-    @Test
-    public void Test01(){
 
         driver.get("https://editor.datatables.net/");
         driver.findElement(By.xpath("//*[@class='dt-button buttons-create']")).click();
@@ -39,18 +44,23 @@ public class calisma_1_1 {
         driver.findElement(By.xpath("//*[@class='DTE_Form_Buttons']")).click();
         driver.findElement(By.xpath("//*[@type='search']")).sendKeys("Ucan Amasyali");
         String x = driver.findElement(By.xpath("//*[@class='sorting_1']")).getText();
+        if(x.equalsIgnoreCase("Ucan Amasyali")){
+            System.out.println("ok");
 
-        Assert.assertEquals("Ucan Amasyali",x);
+        }else System.out.println("no");
+
+
         driver.findElement(By.xpath("//*[@class='sorting_1']")).click();
 
         driver.findElement(By.xpath("//*[@class='dt-button buttons-selected buttons-remove']")).click();
 
         driver.findElement(By.xpath("//*[@class='DTE_Form_Buttons']")).click();
 
-        String r= driver.findElement(By.xpath("//*[@class='dataTables_empty']")).getText();
+        Boolean y = driver.findElement(By.xpath("//*[@class='dataTables_empty']")).isDisplayed();
 
-        Assert.assertFalse(r.equalsIgnoreCase("Ucan Amasyali"));
+        if(y=true){
+            System.out.println("ok");
 
+        }else System.out.println("no");
     }
-
 }

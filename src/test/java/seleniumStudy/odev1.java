@@ -1,4 +1,4 @@
-package HomeWork;
+package seleniumStudy;
 
 import org.junit.Assert;
 import org.junit.Test;
