@@ -1,28 +1,16 @@
-package CalismaAlani;
+package day13;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.TestBase;
 
-import java.time.Duration;
-import java.util.List;
-
-public class bos extends TestBase {
-
+public class _04_StaleElementReferenceException extends TestBase {
     @Test
     public void staleElementReferenceExceptionTest1(){
         driver.get("https://www.techproeducation.com");
+        waitFor(5);
 //        LMS LOGIN linkine tikla ve o sayfanin URL inin lms icerdigini test et
         WebElement lmsLoginLink = driver.findElement(By.linkText("LMS LOGIN"));
         waitFor(5);
@@ -32,7 +20,10 @@ public class bos extends TestBase {
 //        Tekrar ana sayfaya gel ve LMS LOGIN sayfasina tekrar
         driver.navigate().back();//tekrar ana sayfaya gittik
         waitFor(5);
-        lmsLoginLink.click();//LMS e git
+        lmsLoginLink.click();//LMS e git. org.openqa.selenium.StaleElementReferenceException:
+        /*
+        lmsLoginLink linkini sayfa yenilendikden(back()) sonra kullandigim icin StaleElementReferenceException aldim
+         */
     }
     @Test
     public void staleElementReferenceExceptionTest2(){
@@ -42,8 +33,14 @@ public class bos extends TestBase {
         waitFor(5);
         driver.navigate().refresh();
         waitFor(5);
-        lmsLoginLink.click();
+//        SAYFA YENILENMEDEN ONCE BULDUGUM ELEMENTI, SAYFA YENILENDIKDEN SONRA KULLANMAK ISTEDIM
+        lmsLoginLink.click();// org.openqa.selenium.StaleElementReferenceException
+
+
+//        COZUM ESKI(SLATE ELEMENT) ELEMENTI TEKRAR LOCATE ET
+//        driver.findElement(By.linkText("LMS LOGIN")).click();
+
+
 
     }
-    }
-
+}

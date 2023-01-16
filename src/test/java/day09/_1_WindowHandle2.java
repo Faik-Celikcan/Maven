@@ -1,4 +1,4 @@
-package utilities.day09;
+package day09;
 
 import org.junit.Assert;
 import org.junit.Test;
