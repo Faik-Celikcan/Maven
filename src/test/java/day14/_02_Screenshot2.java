@@ -33,9 +33,5 @@ public class _02_Screenshot2 extends TestBase {
         takeScreenshotOfElement(driver.findElement(By.xpath("//div[@data-id='898ce2e']")));
 
 
-
-
-
-
     }
 }
